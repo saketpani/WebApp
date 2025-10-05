@@ -10,10 +10,15 @@
         @foreach (var book in Model)
         {
             <div class="book-card">
-                <h3>@book.Title</h3>
-                <p class="author">by @book.AuthorName</p>
-                <p class="year">Published: @book.YearOfPublication</p>
-                <p class="description">@book.Description</p>
+                <div class="book-image">
+                    <img src="@book.ImageUrl" alt="@book.Title" />
+                </div>
+                <div class="book-info">
+                    <h3>@book.Title</h3>
+                    <p class="author">by @book.AuthorName</p>
+                    <p class="year">Published: @book.YearOfPublication</p>
+                    <p class="description">@book.Description</p>
+                </div>
             </div>
         }
     </div>

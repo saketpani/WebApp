@@ -7,5 +7,6 @@ namespace WebApp.Models
         public string Description { get; set; }
         public int YearOfPublication { get; set; }
         public string AuthorName { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
