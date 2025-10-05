@@ -5,7 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure for App Runner
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(8080);
+    options.ListenAnyIP(8080, listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1;
+    });
 });
 
 builder.Services.AddControllersWithViews();
@@ -16,10 +19,10 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// Remove HTTPS redirection for App Runner
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
