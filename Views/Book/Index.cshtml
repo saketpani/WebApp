@@ -1,0 +1,20 @@
+@model List<WebApp.Models.Book>
+@{
+    ViewData["Title"] = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="books-container">
+    <h2>Book Collection</h2>
+    <div class="books-grid">
+        @foreach (var book in Model)
+        {
+            <div class="book-card">
+                <h3>@book.Title</h3>
+                <p class="author">by @book.AuthorName</p>
+                <p class="year">Published: @book.YearOfPublication</p>
+                <p class="description">@book.Description</p>
+            </div>
+        }
+    </div>
+</div>
