@@ -2,6 +2,12 @@ using WebApp.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure for App Runner
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(8080);
+});
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddApplicationServices();
 
