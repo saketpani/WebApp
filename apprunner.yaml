@@ -1,0 +1,17 @@
+version: 1.0
+runtime: dotnet6
+build:
+  commands:
+    build:
+      - echo "Building .NET 6 application"
+      - dotnet restore
+      - dotnet publish --configuration Release --output ./publish
+run:
+  runtime-version: 6.0
+  command: dotnet ./publish/WebApp.dll
+  network:
+    port: 8080
+    env: PORT
+  env:
+    - name: ASPNETCORE_ENVIRONMENT
+      value: Production
